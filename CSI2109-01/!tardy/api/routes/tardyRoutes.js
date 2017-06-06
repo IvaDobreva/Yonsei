@@ -2,6 +2,8 @@
 module.exports = function(app, fs) {
 
   var path = require('path');
+  var classroom;
+  var arrivaltime;
 
   app.get('/', function(req, res) {
     //res.render(path.join(__dirname+'/../views/index'));
@@ -11,9 +13,8 @@ module.exports = function(app, fs) {
   });
 
   app.post('/', function(req, res) {
-    console.log(req.body.classroom);
-    console.log(req.body.arrivaltime);
-
+    classroom = req.body.classroom;
+    arrivaltime = req.body.arrivaltime;
   });
 
   function processForm(req, res) {
