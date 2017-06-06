@@ -111,7 +111,6 @@ module.exports = function(app, fs) {
       // Log test, with the addition of reversing the path and prepending the first node so it's more readable
       console.log(g.shortestPath(req[0], req[1]).concat([req[0]]).reverse());
 
-      return 'utfeyt';
     })
   }
 };
