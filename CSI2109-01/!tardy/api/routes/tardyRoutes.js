@@ -7,7 +7,29 @@ module.exports = function(app, fs) {
     //res.render(path.join(__dirname+'/../views/index'));
     res.render(path.join(__dirname+'/../views/index'));
     //__dirname : It will resolve to your project folder.
+
   });
+
+  app.post('/', function(req, res) {
+    console.log(req.body.classroom);
+    console.log(req.body.arrivaltime);
+
+  });
+
+  function processForm(req, res) {
+    var form = new formidable.IncomingForm();
+
+      form.parse(req, function(err, fields, files) {
+        req.WriteHead(200, {
+          'content-type': 'text/plain'
+        });
+        res.write('received the data:\n\n');
+        res.end(util.inspect({
+          fields: fields,
+          files: files
+        }));
+      });
+  }
 
   function Dijk(req, res){
     fs.readFile( __dirname + "/../data/" + "graph.json", 'utf8' , function (err,data) {
